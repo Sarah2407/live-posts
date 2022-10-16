@@ -76,7 +76,7 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(Comment $comment, CommentResource $repository)
+    public function destroy(Comment $comment, CommentRepository $repository)
     {
         $comment = $repository->delete($comment);
 
