@@ -9,28 +9,27 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Http\Resources\PostResource;
 
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return ResourceCollection
      */
     public function index()
     {
         $posts = Post::query()->get();
 
-        return new JsonResponse([
-            'data' => $posts
-        ]);
+        return PostResource::collection($posts);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Ioo  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return PostResource
      */
     public function store(Request $request)
     {
@@ -44,22 +43,18 @@ class PostController extends Controller
             return $created;
         });
 
-        return new JsonResponse([
-            'data' => $created
-        ]);
+        return new PostResource($created);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\JsonResponse
+     * @return PostResource
      */
     public function show(Post $post)
     {
-        return new JsonResponse([
-            'data' => $post
-        ]);
+        return new PostResource($post);
     }
 
     /**
@@ -67,7 +62,7 @@ class PostController extends Controller
      *
      * @param  \App\Http\Requests\UpdatePostRequest  $request
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\JsonResponse
+     * @return PostResource | JsonResponse
      */
     public function update(Request $request, Post $post)
     {
@@ -85,9 +80,7 @@ class PostController extends Controller
                 ], status: 400);
         }
 
-        return new JsonResponse([
-            'data' => $post
-        ]);
+        return new PostResource($post);
     }
 
     /**
