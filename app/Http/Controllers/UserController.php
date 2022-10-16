@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use Illuminate\Http\JsonResponse;
 
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,28 +16,21 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::query()->get();
-
         return new JsonResponse([
-            'data' => $posts
+            'data' => 'heyaa'
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Ioo  $request
+     * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        $created = Post::query()->create([
-            'title' => $request->title,
-            'body' => $request->body
-        ]);
-
         return new JsonResponse([
-            'data' => $created
+            'data' => 'posted'
         ]);
     }
 
@@ -48,10 +40,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Post $post)
+    public function show(User $user)
     {
         return new JsonResponse([
-            'data' => $post
+            'data' => $user
         ]);
     }
 
@@ -62,8 +54,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, User $user)
     {
+        return new JsonResponse([
+            'data' => 'patched'
+        ]);
     }
 
     /**
@@ -72,8 +67,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(Post $post)
+    public function destroy(User $user)
     {
-        //
+        return new JsonResponse([
+            'data' => 'deleted'
+        ]);
     }
 }
