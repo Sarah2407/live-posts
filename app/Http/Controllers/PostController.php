@@ -64,6 +64,23 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        //$post->update($request->only(['title, body']));
+        $updated = $post->update([
+            'title' => $request->title ?? $post->title,
+            'body' => $request->body ?? $post->body,
+        ]);
+
+        if (!$updated) {
+            return new JsonResponse([
+                'errors' => [
+                    'Failed to update'
+                ]
+                ], status: 400);
+        }
+
+        return new JsonResponse([
+            'data' => $post
+        ]);
     }
 
     /**
@@ -74,6 +91,18 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $deleted = $post->forceDelete();
+
+        if (!$deleted) {
+            return new JsonResponse([
+                'errors' => [
+                    'Failed to delete resource'
+                ]
+                ], status: 400);
+        }
+
+        return new JsonResponse([
+            'data' => 'success'
+        ]);
     }
 }

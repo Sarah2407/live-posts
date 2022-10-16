@@ -9,6 +9,8 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['body', 'user_id', 'post_id'];
+
     protected $casts = [
         'body' => 'array'
     ];
