@@ -1,0 +1,1588 @@
+openapi: 3.0.3
+info:
+  title: Livepost
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/posts:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      title: Post1
+                      body: 'body of post1'
+                      created_at: '2022-10-16T09:23:28.000000Z'
+                      updated_at: '2022-10-16T09:23:28.000000Z'
+                    -
+                      id: 3
+                      title: 'post 3'
+                      body: []
+                      created_at: '2022-10-16T12:42:17.000000Z'
+                      updated_at: '2022-10-16T12:42:17.000000Z'
+                    -
+                      id: 4
+                      title: 'post 4'
+                      body: []
+                      created_at: '2022-10-16T15:29:43.000000Z'
+                      updated_at: '2022-10-16T15:29:43.000000Z'
+                    -
+                      id: 6
+                      title: Post6
+                      body: 'body of post6'
+                      created_at: '2022-10-17T12:25:20.000000Z'
+                      updated_at: '2022-10-17T12:25:20.000000Z'
+                  links:
+                    first: 'http://localhost/api/posts?page=1'
+                    last: 'http://localhost/api/posts?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost/api/posts?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://localhost/api/posts'
+                    per_page: 10
+                    to: 4
+                    total: 4
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        title: Post1
+                        body: 'body of post1'
+                        created_at: '2022-10-16T09:23:28.000000Z'
+                        updated_at: '2022-10-16T09:23:28.000000Z'
+                      -
+                        id: 3
+                        title: 'post 3'
+                        body: []
+                        created_at: '2022-10-16T12:42:17.000000Z'
+                        updated_at: '2022-10-16T12:42:17.000000Z'
+                      -
+                        id: 4
+                        title: 'post 4'
+                        body: []
+                        created_at: '2022-10-16T15:29:43.000000Z'
+                        updated_at: '2022-10-16T15:29:43.000000Z'
+                      -
+                        id: 6
+                        title: Post6
+                        body: 'body of post6'
+                        created_at: '2022-10-17T12:25:20.000000Z'
+                        updated_at: '2022-10-17T12:25:20.000000Z'
+                    items:
+                      type: object
+                  links:
+                    type: object
+                    example:
+                      first: 'http://localhost/api/posts?page=1'
+                      last: 'http://localhost/api/posts?page=1'
+                      prev: null
+                      next: null
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 1
+                      links:
+                        -
+                          url: null
+                          label: '&laquo; Previous'
+                          active: false
+                        -
+                          url: 'http://localhost/api/posts?page=1'
+                          label: '1'
+                          active: true
+                        -
+                          url: null
+                          label: 'Next &raquo;'
+                          active: false
+                      path: 'http://localhost/api/posts'
+                      per_page: 10
+                      to: 4
+                      total: 4
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: neque
+                body:
+                  type: string
+                  description: ''
+                  example: asperiores
+                user_ids:
+                  type: array
+                  description: ''
+                  example:
+                    - ab
+                  items:
+                    type: string
+              required:
+                - title
+                - body
+                - user_ids
+      security: []
+  '/api/posts/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    title: Post1
+                    body: 'body of post1'
+                    created_at: '2022-10-16T09:23:28.000000Z'
+                    updated_at: '2022-10-16T09:23:28.000000Z'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      title: Post1
+                      body: 'body of post1'
+                      created_at: '2022-10-16T09:23:28.000000Z'
+                      updated_at: '2022-10-16T09:23:28.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    patch:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the post.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/comments:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 3
+                      body: 'body of comment 3'
+                      user_id: 1
+                      post_id: 1
+                      created_at: '2022-10-16T10:42:24.000000Z'
+                      updated_at: '2022-10-16T10:44:33.000000Z'
+                    -
+                      id: 5
+                      body: 'body of comment 5'
+                      user_id: 1
+                      post_id: 1
+                      created_at: '2022-10-16T10:44:16.000000Z'
+                      updated_at: '2022-10-16T16:38:45.000000Z'
+                    -
+                      id: 7
+                      body: 'body of comment 7'
+                      user_id: 2
+                      post_id: 1
+                      created_at: '2022-10-16T16:38:11.000000Z'
+                      updated_at: '2022-10-16T16:38:11.000000Z'
+                  links:
+                    first: 'http://localhost/api/comments?page=1'
+                    last: 'http://localhost/api/comments?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost/api/comments?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://localhost/api/comments'
+                    per_page: 10
+                    to: 3
+                    total: 3
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 3
+                        body: 'body of comment 3'
+                        user_id: 1
+                        post_id: 1
+                        created_at: '2022-10-16T10:42:24.000000Z'
+                        updated_at: '2022-10-16T10:44:33.000000Z'
+                      -
+                        id: 5
+                        body: 'body of comment 5'
+                        user_id: 1
+                        post_id: 1
+                        created_at: '2022-10-16T10:44:16.000000Z'
+                        updated_at: '2022-10-16T16:38:45.000000Z'
+                      -
+                        id: 7
+                        body: 'body of comment 7'
+                        user_id: 2
+                        post_id: 1
+                        created_at: '2022-10-16T16:38:11.000000Z'
+                        updated_at: '2022-10-16T16:38:11.000000Z'
+                    items:
+                      type: object
+                  links:
+                    type: object
+                    example:
+                      first: 'http://localhost/api/comments?page=1'
+                      last: 'http://localhost/api/comments?page=1'
+                      prev: null
+                      next: null
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 1
+                      links:
+                        -
+                          url: null
+                          label: '&laquo; Previous'
+                          active: false
+                        -
+                          url: 'http://localhost/api/comments?page=1'
+                          label: '1'
+                          active: true
+                        -
+                          url: null
+                          label: 'Next &raquo;'
+                          active: false
+                      path: 'http://localhost/api/comments'
+                      per_page: 10
+                      to: 3
+                      total: 3
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  '/api/comments/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No query results for model [App\Models\Comment] 1'
+                  exception: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+                  file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
+                  line: 380
+                  trace:
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
+                      line: 356
+                      function: prepareException
+                      class: Illuminate\Foundation\Exceptions\Handler
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\nunomaduro\collision\src\Adapters\Laravel\ExceptionHandler.php'
+                      line: 54
+                      function: render
+                      class: Illuminate\Foundation\Exceptions\Handler
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php'
+                      line: 51
+                      function: render
+                      class: NunoMaduro\Collision\Adapters\Laravel\ExceptionHandler
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 185
+                      function: handleException
+                      class: Illuminate\Routing\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                      line: 126
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                      line: 102
+                      function: handleRequest
+                      class: Illuminate\Routing\Middleware\ThrottleRequests
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                      line: 54
+                      function: handleRequestUsingNamedLimiter
+                      class: Illuminate\Routing\Middleware\ThrottleRequests
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Routing\Middleware\ThrottleRequests
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 116
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                      line: 726
+                      function: then
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                      line: 703
+                      function: runRouteWithinStack
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                      line: 667
+                      function: runRoute
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                      line: 656
+                      function: dispatchToRoute
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                      line: 190
+                      function: dispatch
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 141
+                      function: 'Illuminate\Foundation\Http\{closure}'
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
+                      line: 21
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
+                      line: 31
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
+                      line: 21
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
+                      line: 40
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TrimStrings
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php'
+                      line: 27
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
+                      line: 86
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
+                      line: 62
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Http\Middleware\HandleCors
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
+                      line: 39
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 180
+                      function: handle
+                      class: Illuminate\Http\Middleware\TrustProxies
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                      line: 116
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                      line: 165
+                      function: then
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                      line: 134
+                      function: sendRequestThroughRouter
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                      line: 303
+                      function: handle
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                      line: 291
+                      function: callLaravelOrLumenRoute
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                      line: 89
+                      function: makeApiCall
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                      line: 45
+                      function: makeResponseCall
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                      line: 35
+                      function: makeResponseCallIfConditionsPass
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                      line: 209
+                      function: __invoke
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                      line: 166
+                      function: iterateThroughStrategies
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                      line: 95
+                      function: fetchResponses
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                      line: 122
+                      function: processRoute
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                      line: 69
+                      function: extractEndpointsInfoFromLaravelApp
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                      line: 47
+                      function: extractEndpointsInfoAndWriteToDisk
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
+                      line: 53
+                      function: get
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                      line: 36
+                      function: handle
+                      class: Knuckles\Scribe\Commands\GenerateDocumentation
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Container\Util.php'
+                      line: 41
+                      function: 'Illuminate\Container\{closure}'
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                      line: 93
+                      function: unwrapIfClosure
+                      class: Illuminate\Container\Util
+                      type: '::'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                      line: 37
+                      function: callBoundMethod
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Container\Container.php'
+                      line: 651
+                      function: call
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Console\Command.php'
+                      line: 144
+                      function: call
+                      class: Illuminate\Container\Container
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\symfony\console\Command\Command.php'
+                      line: 308
+                      function: execute
+                      class: Illuminate\Console\Command
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Console\Command.php'
+                      line: 126
+                      function: run
+                      class: Symfony\Component\Console\Command\Command
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\symfony\console\Application.php'
+                      line: 1002
+                      function: run
+                      class: Illuminate\Console\Command
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\symfony\console\Application.php'
+                      line: 299
+                      function: doRunCommand
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\symfony\console\Application.php'
+                      line: 171
+                      function: doRun
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Console\Application.php'
+                      line: 102
+                      function: run
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
+                      line: 151
+                      function: run
+                      class: Illuminate\Console\Application
+                      type: '->'
+                    -
+                      file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\artisan'
+                      line: 37
+                      function: handle
+                      class: Illuminate\Foundation\Console\Kernel
+                      type: '->'
+                properties:
+                  message:
+                    type: string
+                    example: 'No query results for model [App\Models\Comment] 1'
+                  exception:
+                    type: string
+                    example: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+                  file:
+                    type: string
+                    example: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
+                  line:
+                    type: integer
+                    example: 380
+                  trace:
+                    type: array
+                    example:
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
+                        line: 356
+                        function: prepareException
+                        class: Illuminate\Foundation\Exceptions\Handler
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\nunomaduro\collision\src\Adapters\Laravel\ExceptionHandler.php'
+                        line: 54
+                        function: render
+                        class: Illuminate\Foundation\Exceptions\Handler
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php'
+                        line: 51
+                        function: render
+                        class: NunoMaduro\Collision\Adapters\Laravel\ExceptionHandler
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 185
+                        function: handleException
+                        class: Illuminate\Routing\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                        line: 126
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                        line: 102
+                        function: handleRequest
+                        class: Illuminate\Routing\Middleware\ThrottleRequests
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
+                        line: 54
+                        function: handleRequestUsingNamedLimiter
+                        class: Illuminate\Routing\Middleware\ThrottleRequests
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Routing\Middleware\ThrottleRequests
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 116
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                        line: 726
+                        function: then
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                        line: 703
+                        function: runRouteWithinStack
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                        line: 667
+                        function: runRoute
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
+                        line: 656
+                        function: dispatchToRoute
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                        line: 190
+                        function: dispatch
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 141
+                        function: 'Illuminate\Foundation\Http\{closure}'
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
+                        line: 21
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
+                        line: 31
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
+                        line: 21
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
+                        line: 40
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TrimStrings
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php'
+                        line: 27
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
+                        line: 86
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
+                        line: 62
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Http\Middleware\HandleCors
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
+                        line: 39
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 180
+                        function: handle
+                        class: Illuminate\Http\Middleware\TrustProxies
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
+                        line: 116
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                        line: 165
+                        function: then
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
+                        line: 134
+                        function: sendRequestThroughRouter
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                        line: 303
+                        function: handle
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                        line: 291
+                        function: callLaravelOrLumenRoute
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                        line: 89
+                        function: makeApiCall
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                        line: 45
+                        function: makeResponseCall
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
+                        line: 35
+                        function: makeResponseCallIfConditionsPass
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                        line: 209
+                        function: __invoke
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                        line: 166
+                        function: iterateThroughStrategies
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
+                        line: 95
+                        function: fetchResponses
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                        line: 122
+                        function: processRoute
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                        line: 69
+                        function: extractEndpointsInfoFromLaravelApp
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
+                        line: 47
+                        function: extractEndpointsInfoAndWriteToDisk
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
+                        line: 53
+                        function: get
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                        line: 36
+                        function: handle
+                        class: Knuckles\Scribe\Commands\GenerateDocumentation
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Container\Util.php'
+                        line: 41
+                        function: 'Illuminate\Container\{closure}'
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                        line: 93
+                        function: unwrapIfClosure
+                        class: Illuminate\Container\Util
+                        type: '::'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
+                        line: 37
+                        function: callBoundMethod
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Container\Container.php'
+                        line: 651
+                        function: call
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Console\Command.php'
+                        line: 144
+                        function: call
+                        class: Illuminate\Container\Container
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\symfony\console\Command\Command.php'
+                        line: 308
+                        function: execute
+                        class: Illuminate\Console\Command
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Console\Command.php'
+                        line: 126
+                        function: run
+                        class: Symfony\Component\Console\Command\Command
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\symfony\console\Application.php'
+                        line: 1002
+                        function: run
+                        class: Illuminate\Console\Command
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\symfony\console\Application.php'
+                        line: 299
+                        function: doRunCommand
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\symfony\console\Application.php'
+                        line: 171
+                        function: doRun
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Console\Application.php'
+                        line: 102
+                        function: run
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
+                        line: 151
+                        function: run
+                        class: Illuminate\Console\Application
+                        type: '->'
+                      -
+                        file: 'C:\Users\Sarah\Desktop\LARAVEL\Laravel 9\laravel-api\artisan'
+                        line: 37
+                        function: handle
+                        class: Illuminate\Foundation\Console\Kernel
+                        type: '->'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    patch:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the comment.'
+        example: 3
+        required: true
+        schema:
+          type: integer
+  /api/user:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/users:
+    get:
+      summary: 'Display a listing of the users.'
+      description: 'Gets a list of users'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: null
+                      email: sara@gmail.com
+                      created_at: '2022-10-16T10:38:16.000000Z'
+                      updated_at: '2022-10-16T10:38:16.000000Z'
+                    -
+                      id: 2
+                      name: null
+                      email: chris@gmail.com
+                      created_at: '2022-10-16T10:38:42.000000Z'
+                      updated_at: '2022-10-16T10:38:42.000000Z'
+                    -
+                      id: 4
+                      name: null
+                      email: gloria1@gmail.com
+                      created_at: '2022-10-16T16:22:49.000000Z'
+                      updated_at: '2022-10-16T16:24:24.000000Z'
+                    -
+                      id: 8
+                      name: null
+                      email: ewuraa@gmail.com
+                      created_at: '2022-10-17T07:33:46.000000Z'
+                      updated_at: '2022-10-17T07:33:46.000000Z'
+                  links:
+                    first: 'http://localhost/api/users?page=1'
+                    last: 'http://localhost/api/users?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost/api/users?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://localhost/api/users'
+                    per_page: 10
+                    to: 4
+                    total: 4
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: null
+                        email: sara@gmail.com
+                        created_at: '2022-10-16T10:38:16.000000Z'
+                        updated_at: '2022-10-16T10:38:16.000000Z'
+                      -
+                        id: 2
+                        name: null
+                        email: chris@gmail.com
+                        created_at: '2022-10-16T10:38:42.000000Z'
+                        updated_at: '2022-10-16T10:38:42.000000Z'
+                      -
+                        id: 4
+                        name: null
+                        email: gloria1@gmail.com
+                        created_at: '2022-10-16T16:22:49.000000Z'
+                        updated_at: '2022-10-16T16:24:24.000000Z'
+                      -
+                        id: 8
+                        name: null
+                        email: ewuraa@gmail.com
+                        created_at: '2022-10-17T07:33:46.000000Z'
+                        updated_at: '2022-10-17T07:33:46.000000Z'
+                    items:
+                      type: object
+                  links:
+                    type: object
+                    example:
+                      first: 'http://localhost/api/users?page=1'
+                      last: 'http://localhost/api/users?page=1'
+                      prev: null
+                      next: null
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 1
+                      links:
+                        -
+                          url: null
+                          label: '&laquo; Previous'
+                          active: false
+                        -
+                          url: 'http://localhost/api/users?page=1'
+                          label: '1'
+                          active: true
+                        -
+                          url: null
+                          label: 'Next &raquo;'
+                          active: false
+                      path: 'http://localhost/api/users'
+                      per_page: 10
+                      to: 4
+                      total: 4
+      tags:
+        - 'User Management'
+      security: []
+    post:
+      summary: 'Store a newly created user in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'User Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Name of the user. Example John Mensah'
+                  example: consequatur
+                email:
+                  type: string
+                  description: 'Email of the user. Example john@gmail.com'
+                  example: aut
+              required:
+                - name
+                - email
+      security: []
+  '/api/users/{id}':
+    get:
+      summary: 'Display the specified user.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: null
+                    email: sara@gmail.com
+                    created_at: '2022-10-16T10:38:16.000000Z'
+                    updated_at: '2022-10-16T10:38:16.000000Z'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: null
+                      email: sara@gmail.com
+                      created_at: '2022-10-16T10:38:16.000000Z'
+                      updated_at: '2022-10-16T10:38:16.000000Z'
+      tags:
+        - 'User Management'
+      security: []
+    patch:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'User Management'
+      security: []
+    delete:
+      summary: 'Remove the specified user from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: 'delete successful'
+                properties:
+                  data:
+                    type: string
+                    example: 'delete successful'
+      tags:
+        - 'User Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'User ID'
+        example: 3
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: 'User Management'
+    description: "\nAPIs to manage user resource"

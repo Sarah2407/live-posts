@@ -10,10 +10,18 @@ use App\Repositories\UserRepository;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 
+/**
+ * @group User Management
+ * 
+ * APIs to manage user resource
+ */
+
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the users.
+     * 
+     * Gets a list of users
      *
      * @return ResourceCollection
      */
@@ -25,8 +33,11 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user in storage.
      *
+     * @bodyParam name string required Name of the user. Example John Mensah
+     * @bodyParam email string required Email of the user. Example john@gmail.com 
+     * 
      * @param  Illuminate\Http\Request $request
      * @return UserResource
      */
@@ -42,9 +53,11 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified user.
+     * 
+     * @urlParam id int required User ID
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\User  $user
      * @return UserResource
      */
     public function show(User $user)
@@ -56,7 +69,7 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  Illuminate\Http\Request $request
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\User  $user
      * @return UserResource | JsonResponse
      */
     public function update(Request $request, User $user, UserRepository $repository)
@@ -70,9 +83,13 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified user from storage.
+     * 
+     * @response 200 {
+     * "data": "delete successful"
+     * }
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(User $user, UserRepository $repository)

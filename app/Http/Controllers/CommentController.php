@@ -10,6 +10,12 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Repositories\CommentRepository;
 
+/**
+ * @group Comment Management
+ * 
+ * APIs to manage user resource
+ */
+
 class CommentController extends Controller
 {
     /**
