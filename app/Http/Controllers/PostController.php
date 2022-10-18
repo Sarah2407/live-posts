@@ -29,10 +29,10 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Ioo  $request
+     * @param  \StorePostRequest  $request
      * @return PostResource
      */
-    public function store(Request $request, PostRepository $repository)
+    public function store(StorePostRequest $request, PostRepository $repository)
     {
         $created = $repository->create($request->only([
             'title',
