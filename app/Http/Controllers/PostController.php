@@ -11,6 +11,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Repositories\PostRepository;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @group Post Management
@@ -90,6 +91,28 @@ class PostController extends Controller
 
         return new JsonResponse([
             'data' => 'success'
+        ]);
+    }
+
+    /**
+     * Share a specified post from storage.
+     *
+     * @response 200 {
+     * "data": "signed url..."
+     * }
+     * 
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function share (Request $request, Post $post)
+    {
+        $url = URL::temporarySignedRoute('shared.post',  now()->addDays(30), [
+            'post' => $post->id,
+        ]);
+
+        return new JsonResponse([
+            "data" => $url,
         ]);
     }
 }

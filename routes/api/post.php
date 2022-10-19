@@ -14,6 +14,8 @@ Route::name('posts.')
         Route::patch('/posts/{post}', [PostController::class, 'update'])->name('update');
     
         Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('destroy');
+
+        Route::post('/posts/{post}/share', [PostController::class, 'share'])->name('share');
     });
 
 

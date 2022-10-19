@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Post;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +24,7 @@ Route::post('/reset-password', function ($token) {
 })
     ->middleware(['guest:'.config('fortify.guard')])
     ->name('password.reset');
+
+Route::get('/shared/posts/{post}', function(Request $request, Post $post){
+    return "Specifically just made for you Post id: {$post->id}";
+})->name('shared.post')->middleware('signed');
