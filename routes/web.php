@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\ChatMessageEvent;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,12 @@ Route::post('/reset-password', function ($token) {
 Route::get('/shared/posts/{post}', function(Request $request, Post $post){
     return "Specifically just made for you Post id: {$post->id}";
 })->name('shared.post')->middleware('signed');
+
+Route::get('/ws', function () {
+    return view('websocket');
+});
+
+Route::post('/chat-message', function(Request $request){
+    event(new ChatMessageEvent($request->message)); 
+    return null;
+});
